@@ -760,7 +760,7 @@
                         return { timestamp, value: parseFloat(value) };
                     });
                     // Calcul des prédictions (algorithme amélioré)
-                    const futureTimes = getFuturePredictionTimes(accessTime, 8, 20, 10, 35);
+                    const futureTimes = getFuturePredictionTimes(accessTime, 2, 4, 6, 15);
                     const allAvg = history.reduce((s,v) => s+v.value, 0) / history.length;
                     const ecartType = Math.sqrt(history.reduce((acc, v) => acc + Math.pow(v.value - allAvg, 2), 0) / history.length);
                     predictions = [];
@@ -780,7 +780,7 @@
                             confidence: predValue ? conf + '%' : '—',
                             confidenceInt: conf
                         });
-                        if (predictions.length >= 8) break; // On limite à 8 affichées
+                        if (predictions.length >= 14) break; // On limite à 8 affichées
                     }
                     savePredictions(predictions);
                 }
