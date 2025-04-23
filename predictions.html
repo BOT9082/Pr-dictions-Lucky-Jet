@@ -760,7 +760,7 @@
                         return { timestamp, value: parseFloat(value) };
                     });
                     // Calcul des prédictions (algorithme amélioré)
-                    const futureTimes = getFuturePredictionTimes(accessTime, 2, 4, 6, 15);
+                    const futureTimes = getFuturePredictionTimes(accessTime, 8, 20, 10, 35);
                     const allAvg = history.reduce((s,v) => s+v.value, 0) / history.length;
                     const ecartType = Math.sqrt(history.reduce((acc, v) => acc + Math.pow(v.value - allAvg, 2), 0) / history.length);
                     predictions = [];
