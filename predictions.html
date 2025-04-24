@@ -851,7 +851,7 @@
         }
 
         // Génère les heures futures (inchangé)
-        function getFuturePredictionTimes(accessDate, count = 8, startAfterMin = 20, minStepMin = 10, maxStepMin = 35) {
+        function getFuturePredictionTimes(accessDate, count = 8, startAfterMin = 4, minStepMin = 7, maxStepMin = 20) {
             let times = [];
             let date = new Date(accessDate.getTime());
             date.setMinutes(date.getMinutes() + startAfterMin);
