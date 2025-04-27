@@ -3,5 +3,5 @@ CIV@00@29 | JohnDoe | 0102147038Ss
 CIV@01@45 | JaneSmith | myPassword456
 CIV@02@78 | AliceBrown | alicePass789
 CIV@03@12 | BobMarley | reggaeLove
-CIV@04@56 | CharlieChaplin | charlieSmile
+COD@31@40| qEgLKi | 314016039
 CAM@11@11 | CharlieChaplin | 0707862517
