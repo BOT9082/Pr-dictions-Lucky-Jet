@@ -443,6 +443,7 @@
      
       if (!userId || !password) {
         errorMsg.textContent = "Veuillez remplir tous les champs.";
+        errorMsg.style.color = '#ef4444';
         errorMsg.classList.add('visible');
         pupilL.classList.remove('red');
         pupilR.classList.remove('red');
