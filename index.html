@@ -1,207 +1,37 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Connexion - Lucky Jet Predictor</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS DÉBUT */
-        :root {
-            --bg-color: #0b0c10;
-            --card-color: rgba(18, 19, 24, 0.8);
-            --primary-glow: #00bcd4; /* Cyan lumineux */
-            --secondary-glow: #8800ff; /* Violet */
-            --text-color: #e0e0e0;
-            --border-color: #2c2f40;
-            --error-color: #ff5c5c;
-            --success-color: #4CAF50;
-        }
-
-        body {
-            font-family: 'Orbitron', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            background-image: radial-gradient(circle, #222530 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        .login-card {
-            background-color: var(--card-color);
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            padding: 40px;
-            width: 350px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 0 15px rgba(0, 188, 212, 0.2);
-            transition: transform 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .login-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 25px rgba(0, 188, 212, 0.5);
-        }
-
-        h1 {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--text-color);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-        }
-        
-        .input-group {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            padding-right: 50px; /* Espace pour l'indicateur */
-            border: none;
-            border-bottom: 2px solid var(--border-color);
-            background-color: transparent;
-            color: var(--primary-glow);
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        input:focus {
-            border-bottom-color: var(--primary-glow);
-            box-shadow: 0 1px 10px rgba(0, 188, 212, 0.5);
-        }
-
-        input::placeholder {
-            color: #555869;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: var(--border-color);
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .toggle-password:hover {
-            color: var(--primary-glow);
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid var(--primary-glow);
-            background-color: transparent;
-            color: var(--primary-glow);
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            margin-top: 25px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 188, 212, 0.2);
-        }
-
-        button:hover {
-            background-color: var(--primary-glow);
-            color: var(--bg-color);
-            box-shadow: 0 0 20px rgba(0, 188, 212, 0.7);
-        }
-
-        .message {
-            font-size: 14px;
-            margin-top: 20px;
-        }
-
-        .error {
-            color: var(--error-color);
-            text-shadow: 0 0 5px var(--error-color);
-        }
-
-        .success {
-            color: var(--success-color);
-            text-shadow: 0 0 5px var(--success-color);
-        }
-
-        .links {
-            margin-top: 30px;
-        }
-
-        .links a {
-            color: var(--primary-glow);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .links a:hover {
-            text-decoration: underline;
-        }
-        /* CSS FIN */
-    </style>
-</head>
-<body>
-    <div class="login-card">
-        <h1>Connexion</h1>
-        <div class="input-group">
-            <input id="user-id" placeholder="Identifiant" spellcheck="false" autocomplete="off">
-        </div>
-        <div class="input-group">
-            <input id="password" placeholder="Mot de passe" type="password" spellcheck="false" autocomplete="off">
-            <span class="toggle-password" onclick="togglePassword()">Voir</span>
-        </div>
-        <button onclick="handleLogin()">Se connecter</button>
-        <p class="message" id="message"></p>
-        <div class="links">
-            <a href="https://t.me/BIGWIN2257375527" target="_blank">Créer un compte / Besoin d'aide ?</a>
-        </div>
-    </div>
-
-    <script>
-        // Gestion de la connexion
+<!doctypehtml><html lang=fr><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>Connexion - Lucky Jet Predictor</title><style>body{font-family:Arial,sans-serif;margin:0;padding:0;background:url(images/lucky-jet-app-screenshot.png) no-repeat center center fixed;background-size:cover;display:flex;justify-content:center;align-items:center;height:100vh;color:#f4f4f4}.glass{backdrop-filter:blur(15px);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:15px;padding:30px;width:350px;text-align:center;box-shadow:0 4px 30px rgba(0,0,0,.5)}h1{font-size:24px;color:#3498db;margin-bottom:20px}input{width:90%;padding:10px;margin:10px 0;border:1px solid rgba(255,255,255,.2);border-radius:5px;background-color:rgba(255,255,255,.2);color:#fff}button{width:100%;padding:10px;border:none;border-radius:5px;background-color:#3498db;color:#fff;font-size:16px;cursor:pointer;margin-top:10px}button:hover{background-color:#2980b9}.message{font-size:14px;margin-top:10px}.error{color:#e74c3c}.success{color:#2ecc71}.links{margin-top:20px}.links a{color:#3498db;text-decoration:none;font-size:14px;display:block;margin-top:5px}.links a:hover{text-decoration:underline}</style><div class=glass><h1>Connexion</h1><input id=user-id placeholder=Identifiant> <input id=password placeholder="Mot de passe"type=password> <button onclick=handleLogin()>Se connecter</button><p class=message id=message><div class=links><a href=https://t.me/BIGWIN2257375527 target=_blank>Créer un compte / Besoin d'aide ?</a></div></div><script>// Gestion de la connexion
         async function handleLogin() {
             const userId = document.getElementById('user-id').value.trim();
             const password = document.getElementById('password').value.trim();
             const message = document.getElementById('message');
+
+            // Réinitialiser les messages
             message.textContent = '';
             message.className = 'message';
+
             if (!userId || !password) {
                 message.textContent = 'Veuillez remplir tous les champs.';
                 message.classList.add('error');
                 return;
             }
+
             try {
+                // Charger le fichier users.txt
                 const response = await fetch('data/users.txt');
                 if (!response.ok) throw new Error("Impossible de charger users.txt");
                 const data = await response.text();
+                // Diviser le fichier en lignes et vérifier les identifiants, ignorer les commentaires
                 const users = data.split('\n')
                     .map(line => line.trim())
                     .filter(line => line && !line.startsWith('#'))
                     .map(line => line.split('|').map(field => field.trim()));
 
+                // Vérification des informations
                 const userMatch = users.find(user => user[0] === userId && user[2] === password);
+
                 if (userMatch) {
                     message.textContent = 'Connexion réussie ! Redirection...';
                     message.classList.add('success');
+                    // Stocke l'ID dans le localStorage pour la suite + redirection avec ?user=ID
                     localStorage.setItem('luckyjet_user', userId);
                     setTimeout(() => {
                         window.location.href = 'predictions.html?user=' + encodeURIComponent(userId);
@@ -214,21 +44,4 @@
                 message.textContent = 'Erreur lors de la vérification.';
                 message.classList.add('error');
             }
-        }
-        
-        // Nouvelle fonction pour afficher/masquer le mot de passe sans emojis
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const toggleIcon = document.querySelector('.toggle-password');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleIcon.textContent = 'Cacher';
-            } else {
-                passwordInput.type = 'password';
-                toggleIcon.textContent = 'Voir';
-            }
-        }
-    </script>
-</body>
-</html>
+        }</script>
