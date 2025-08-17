@@ -6,23 +6,25 @@
     <title>Connexion - Lucky Jet Predictor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* CSS DÉBUT */
         :root {
-            --primary-color: #00e6e6; /* Cyan pour l'effet lumineux */
-            --secondary-color: #f0f0f0; /* Blanc pour le texte principal */
-            --background-color: #121212; /* Noir très sombre */
-            --border-color: #333333; /* Gris foncé pour les bordures */
-            --error-color: #e65252; /* Rouge doux pour les erreurs */
+            --bg-color: #1a1a1a;
+            --card-color: #222222;
+            --text-color: #f0f0f0;
+            --primary-color: #007bff;
+            --border-color: #444444;
+            --error-color: #ff5c5c;
+            --success-color: #4CAF50;
         }
-        
+
         body {
-            font-family: 'Roboto Mono', monospace;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--background-color);
-            color: var(--secondary-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,16 +33,14 @@
         }
 
         .login-card {
-            background-color: #1d1d1d;
+            background-color: var(--card-color);
             border: 1px solid var(--border-color);
-            border-top: 5px solid var(--primary-color);
+            border-radius: 10px;
             padding: 40px;
             width: 350px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(0, 230, 230, 0.1);
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease-out;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
         .login-card:hover {
@@ -49,51 +49,67 @@
 
         h1 {
             font-size: 28px;
-            color: var(--primary-color);
+            font-weight: 300;
+            color: var(--text-color);
             margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(0, 230, 230, 0.5);
-            letter-spacing: 2px;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
         }
 
         input {
-            width: 90%;
+            width: 100%;
             padding: 12px;
-            margin: 15px 0;
+            padding-right: 40px; /* Espace pour l'icône */
             border: 1px solid var(--border-color);
-            background-color: var(--background-color);
-            color: var(--secondary-color);
+            border-radius: 5px;
+            background-color: transparent;
+            color: var(--text-color);
             font-size: 16px;
             outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: border-color 0.3s;
         }
 
         input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 10px rgba(0, 230, 230, 0.5);
         }
 
         input::placeholder {
-            color: #555555;
+            color: #777;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--border-color);
+            transition: color 0.3s;
+        }
+
+        .toggle-password:hover {
+            color: var(--primary-color);
         }
 
         button {
             width: 100%;
             padding: 12px;
-            border: 1px solid var(--primary-color);
+            border: none;
+            border-radius: 5px;
             background-color: var(--primary-color);
-            color: var(--background-color);
+            color: var(--text-color);
             font-size: 16px;
+            font-weight: 700;
             cursor: pointer;
             margin-top: 20px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: transparent;
-            color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(0, 230, 230, 0.5);
+            background-color: #0056b3;
         }
 
         .message {
@@ -106,7 +122,7 @@
         }
 
         .success {
-            color: var(--primary-color);
+            color: var(--success-color);
         }
 
         .links {
@@ -117,30 +133,34 @@
             color: var(--primary-color);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s, text-shadow 0.3s;
+            transition: color 0.3s;
         }
 
         .links a:hover {
-            text-decoration: none;
-            text-shadow: 0 0 10px var(--primary-color);
+            color: #0056b3;
         }
         /* CSS FIN */
     </style>
 </head>
 <body>
     <div class="login-card">
-        <h1>ACCESS POINT</h1>
-        <input id="user-id" placeholder="IDENTIFIANT" spellcheck="false" autocomplete="off">
-        <input id="password" placeholder="MOT DE PASSE" type="password" spellcheck="false" autocomplete="off">
-        <button onclick="handleLogin()">AUTHENTIFIER</button>
+        <h1>Connexion</h1>
+        <div class="input-group">
+            <input id="user-id" placeholder="Identifiant" spellcheck="false" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <input id="password" placeholder="Mot de passe" type="password" spellcheck="false" autocomplete="off">
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+        <button onclick="handleLogin()">Se connecter</button>
         <p class="message" id="message"></p>
         <div class="links">
-            <a href="https://t.me/BIGWIN2257375527" target="_blank">PROBLÈMES D'ACCÈS ?</a>
+            <a href="https://t.me/BIGWIN2257375527" target="_blank">Créer un compte / Besoin d'aide ?</a>
         </div>
     </div>
 
     <script>
-        // Votre code JS inchangé ici
+        // Votre fonction de connexion, inchangée
         async function handleLogin() {
             const userId = document.getElementById('user-id').value.trim();
             const password = document.getElementById('password').value.trim();
@@ -150,7 +170,7 @@
             message.className = 'message';
 
             if (!userId || !password) {
-                message.textContent = 'ERREUR : VEUILLEZ COMPLÉTER LES CHAMPS.';
+                message.textContent = 'Veuillez remplir tous les champs.';
                 message.classList.add('error');
                 return;
             }
@@ -167,19 +187,33 @@
                 const userMatch = users.find(user => user[0] === userId && user[2] === password);
 
                 if (userMatch) {
-                    message.textContent = 'ACCÈS AUTORISÉ. REDIRECTION...';
+                    message.textContent = 'Connexion réussie ! Redirection...';
                     message.classList.add('success');
                     localStorage.setItem('luckyjet_user', userId);
                     setTimeout(() => {
                         window.location.href = 'predictions.html?user=' + encodeURIComponent(userId);
                     }, 1200);
                 } else {
-                    message.textContent = 'IDENTIFIANT OU MOT DE PASSE INCORRECT.';
+                    message.textContent = 'Identifiant ou mot de passe incorrect.';
                     message.classList.add('error');
                 }
             } catch (error) {
-                message.textContent = 'ERREUR : IMPOSSIBLE DE VÉRIFIER.';
+                message.textContent = 'Erreur lors de la vérification.';
                 message.classList.add('error');
+            }
+        }
+        
+        // Nouvelle fonction pour afficher/masquer le mot de passe
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🙈'; // Œil barré
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '👁️'; // Œil
             }
         }
     </script>
