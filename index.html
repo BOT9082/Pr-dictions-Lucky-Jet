@@ -1,4 +1,172 @@
-<!doctypehtml><html lang=fr><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>Connexion - Lucky Jet Predictor</title><style>body{font-family:Arial,sans-serif;margin:0;padding:0;background:url(images/lucky-jet-app-screenshot.png) no-repeat center center fixed;background-size:cover;display:flex;justify-content:center;align-items:center;height:100vh;color:#f4f4f4}.glass{backdrop-filter:blur(15px);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:15px;padding:30px;width:350px;text-align:center;box-shadow:0 4px 30px rgba(0,0,0,.5)}h1{font-size:24px;color:#3498db;margin-bottom:20px}input{width:90%;padding:10px;margin:10px 0;border:1px solid rgba(255,255,255,.2);border-radius:5px;background-color:rgba(255,255,255,.2);color:#fff}button{width:100%;padding:10px;border:none;border-radius:5px;background-color:#3498db;color:#fff;font-size:16px;cursor:pointer;margin-top:10px}button:hover{background-color:#2980b9}.message{font-size:14px;margin-top:10px}.error{color:#e74c3c}.success{color:#2ecc71}.links{margin-top:20px}.links a{color:#3498db;text-decoration:none;font-size:14px;display:block;margin-top:5px}.links a:hover{text-decoration:underline}</style><div class=glass><h1>Connexion</h1><input id=user-id placeholder=Identifiant> <input id=password placeholder="Mot de passe"type=password> <button onclick=handleLogin()>Se connecter</button><p class=message id=message><div class=links><a href=https://t.me/BIGWIN2257375527 target=_blank>Créer un compte / Besoin d'aide ?</a></div></div><script>// Gestion de la connexion
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connexion - Lucky Jet Predictor</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Monoton&display=swap">
+    <style>
+        /* CSS DÉBUT */
+        body {
+            font-family: 'VT323', monospace;
+            margin: 0;
+            padding: 0;
+            /* Fond de page sombre avec une légère animation */
+            background-color: #0d0c1b;
+            background-image: radial-gradient(circle, #1a1936 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: backgroundAnimation 20s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #00ff00; /* Texte vert fluo */
+        }
+
+        /* Animation pour le fond */
+        @keyframes backgroundAnimation {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100% 100%;
+            }
+        }
+
+        .hacker-container {
+            /* Conteneur principal de la page de connexion */
+            background: rgba(13, 12, 27, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            padding: 40px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00; /* Effet de lueur verte */
+            position: relative;
+        }
+        
+        /* Effet "Glitch" au chargement */
+        .hacker-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,255,0,0.1), rgba(0,255,0,0.1) 1px, transparent 1px, transparent 2px);
+            animation: glitchEffect 0.5s infinite;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        @keyframes glitchEffect {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        h1 {
+            /* Titre avec un style "digital" */
+            font-family: 'Monoton', cursive;
+            font-size: 32px;
+            color: #00ff00;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        input {
+            /* Champs de saisie */
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #00ff00;
+            background-color: transparent;
+            color: #00ff00;
+            font-size: 16px;
+            outline: none;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        input::placeholder {
+            color: rgba(0, 255, 0, 0.5); /* Placeholder moins visible */
+        }
+        
+        input:focus {
+            box-shadow: 0 0 8px #00ff00;
+        }
+
+        button {
+            /* Bouton de connexion */
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #00ff00;
+            background-color: transparent;
+            color: #00ff00;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 15px;
+            text-shadow: 0 0 5px #00ff00;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00ff00;
+            color: #0d0c1b;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        .message {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: #ff0000; /* Texte d'erreur rouge */
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .success {
+            color: #00ff00; /* Texte de succès vert */
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .links {
+            margin-top: 25px;
+        }
+
+        .links a {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+            transition: text-shadow 0.3s;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        /* CSS FIN */
+    </style>
+</head>
+<body>
+    <div class="hacker-container">
+        <h1>LOGIN</h1>
+        <input id="user-id" placeholder="USERNAME" spellcheck="false" autocomplete="off">
+        <input id="password" placeholder="PASSWORD" type="password" spellcheck="false" autocomplete="off">
+        <button onclick="handleLogin()">ACCESS</button>
+        <p class="message" id="message"></p>
+        <div class="links">
+            <a href="https://t.me/BIGWIN2257375527" target="_blank">>> CREATE ACCOUNT / GET HELP</a>
+        </div>
+    </div>
+
+    <script>
+        // Gestion de la connexion
         async function handleLogin() {
             const userId = document.getElementById('user-id').value.trim();
             const password = document.getElementById('password').value.trim();
@@ -9,7 +177,7 @@
             message.className = 'message';
 
             if (!userId || !password) {
-                message.textContent = 'Veuillez remplir tous les champs.';
+                message.textContent = '>> ERROR: PLEASE FILL ALL FIELDS';
                 message.classList.add('error');
                 return;
             }
@@ -29,7 +197,7 @@
                 const userMatch = users.find(user => user[0] === userId && user[2] === password);
 
                 if (userMatch) {
-                    message.textContent = 'Connexion réussie ! Redirection...';
+                    message.textContent = '>> ACCESS GRANTED. REDIRECTING...';
                     message.classList.add('success');
                     // Stocke l'ID dans le localStorage pour la suite + redirection avec ?user=ID
                     localStorage.setItem('luckyjet_user', userId);
@@ -37,11 +205,14 @@
                         window.location.href = 'predictions.html?user=' + encodeURIComponent(userId);
                     }, 1200);
                 } else {
-                    message.textContent = 'Identifiant ou mot de passe incorrect.';
+                    message.textContent = '>> ACCESS DENIED: INVALID CREDENTIALS';
                     message.classList.add('error');
                 }
             } catch (error) {
-                message.textContent = 'Erreur lors de la vérification.';
+                message.textContent = '>> ERROR: UNABLE TO VERIFY CREDENTIALS';
                 message.classList.add('error');
             }
-        }</script>
+        }
+    </script>
+</body>
+</html>
