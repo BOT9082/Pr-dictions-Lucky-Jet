@@ -4,133 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Connexion - Lucky Jet Predictor</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Monoton&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* CSS DÉBUT */
+        :root {
+            --primary-color: #00e6e6; /* Cyan pour l'effet lumineux */
+            --secondary-color: #f0f0f0; /* Blanc pour le texte principal */
+            --background-color: #121212; /* Noir très sombre */
+            --border-color: #333333; /* Gris foncé pour les bordures */
+            --error-color: #e65252; /* Rouge doux pour les erreurs */
+        }
+        
         body {
-            font-family: 'VT323', monospace;
+            font-family: 'Roboto Mono', monospace;
             margin: 0;
             padding: 0;
-            /* Fond de page sombre avec une légère animation */
-            background-color: #0d0c1b;
-            background-image: radial-gradient(circle, #1a1936 1px, transparent 1px);
-            background-size: 20px 20px;
-            animation: backgroundAnimation 20s linear infinite;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #00ff00; /* Texte vert fluo */
+            overflow: hidden;
         }
 
-        /* Animation pour le fond */
-        @keyframes backgroundAnimation {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 100% 100%;
-            }
-        }
-
-        .hacker-container {
-            /* Conteneur principal de la page de connexion */
-            background: rgba(13, 12, 27, 0.8);
-            border: 2px solid #00ff00;
-            border-radius: 5px;
+        .login-card {
+            background-color: #1d1d1d;
+            border: 1px solid var(--border-color);
+            border-top: 5px solid var(--primary-color);
             padding: 40px;
             width: 350px;
             text-align: center;
-            box-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00; /* Effet de lueur verte */
+            box-shadow: 0 0 20px rgba(0, 230, 230, 0.1);
             position: relative;
-        }
-        
-        /* Effet "Glitch" au chargement */
-        .hacker-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(0deg, rgba(0,255,0,0.1), rgba(0,255,0,0.1) 1px, transparent 1px, transparent 2px);
-            animation: glitchEffect 0.5s infinite;
-            opacity: 0.1;
-            pointer-events: none;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
         }
 
-        @keyframes glitchEffect {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+        .login-card:hover {
+            transform: translateY(-5px);
         }
 
         h1 {
-            /* Titre avec un style "digital" */
-            font-family: 'Monoton', cursive;
-            font-size: 32px;
-            color: #00ff00;
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px #00ff00;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(0, 230, 230, 0.5);
+            letter-spacing: 2px;
         }
 
         input {
-            /* Champs de saisie */
             width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #00ff00;
-            background-color: transparent;
-            color: #00ff00;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid var(--border-color);
+            background-color: var(--background-color);
+            color: var(--secondary-color);
             font-size: 16px;
             outline: none;
-            text-shadow: 0 0 5px #00ff00;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 230, 230, 0.5);
         }
 
         input::placeholder {
-            color: rgba(0, 255, 0, 0.5); /* Placeholder moins visible */
-        }
-        
-        input:focus {
-            box-shadow: 0 0 8px #00ff00;
+            color: #555555;
         }
 
         button {
-            /* Bouton de connexion */
             width: 100%;
             padding: 12px;
-            border: 2px solid #00ff00;
-            background-color: transparent;
-            color: #00ff00;
-            font-size: 18px;
+            border: 1px solid var(--primary-color);
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            font-size: 16px;
             cursor: pointer;
-            margin-top: 15px;
-            text-shadow: 0 0 5px #00ff00;
-            transition: all 0.3s ease;
+            margin-top: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
         }
 
         button:hover {
-            background-color: #00ff00;
-            color: #0d0c1b;
-            box-shadow: 0 0 15px #00ff00;
+            background-color: transparent;
+            color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 230, 230, 0.5);
         }
 
         .message {
             font-size: 14px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .error {
-            color: #ff0000; /* Texte d'erreur rouge */
-            text-shadow: 0 0 5px #ff0000;
+            color: var(--error-color);
         }
 
         .success {
-            color: #00ff00; /* Texte de succès vert */
-            text-shadow: 0 0 5px #00ff00;
+            color: var(--primary-color);
         }
 
         .links {
@@ -138,78 +114,71 @@
         }
 
         .links a {
-            color: #00ff00;
+            color: var(--primary-color);
             text-decoration: none;
             font-size: 14px;
-            display: block;
-            margin-top: 5px;
-            transition: text-shadow 0.3s;
+            transition: color 0.3s, text-shadow 0.3s;
         }
 
         .links a:hover {
-            text-decoration: underline;
-            text-shadow: 0 0 10px #00ff00;
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--primary-color);
         }
         /* CSS FIN */
     </style>
 </head>
 <body>
-    <div class="hacker-container">
-        <h1>LOGIN</h1>
-        <input id="user-id" placeholder="USERNAME" spellcheck="false" autocomplete="off">
-        <input id="password" placeholder="PASSWORD" type="password" spellcheck="false" autocomplete="off">
-        <button onclick="handleLogin()">ACCESS</button>
+    <div class="login-card">
+        <h1>ACCESS POINT</h1>
+        <input id="user-id" placeholder="IDENTIFIANT" spellcheck="false" autocomplete="off">
+        <input id="password" placeholder="MOT DE PASSE" type="password" spellcheck="false" autocomplete="off">
+        <button onclick="handleLogin()">AUTHENTIFIER</button>
         <p class="message" id="message"></p>
         <div class="links">
-            <a href="https://t.me/BIGWIN2257375527" target="_blank">>> CREATE ACCOUNT / GET HELP</a>
+            <a href="https://t.me/BIGWIN2257375527" target="_blank">PROBLÈMES D'ACCÈS ?</a>
         </div>
     </div>
 
     <script>
-        // Gestion de la connexion
+        // Votre code JS inchangé ici
         async function handleLogin() {
             const userId = document.getElementById('user-id').value.trim();
             const password = document.getElementById('password').value.trim();
             const message = document.getElementById('message');
 
-            // Réinitialiser les messages
             message.textContent = '';
             message.className = 'message';
 
             if (!userId || !password) {
-                message.textContent = '>> ERROR: PLEASE FILL ALL FIELDS';
+                message.textContent = 'ERREUR : VEUILLEZ COMPLÉTER LES CHAMPS.';
                 message.classList.add('error');
                 return;
             }
 
             try {
-                // Charger le fichier users.txt
                 const response = await fetch('data/users.txt');
                 if (!response.ok) throw new Error("Impossible de charger users.txt");
                 const data = await response.text();
-                // Diviser le fichier en lignes et vérifier les identifiants, ignorer les commentaires
                 const users = data.split('\n')
                     .map(line => line.trim())
                     .filter(line => line && !line.startsWith('#'))
                     .map(line => line.split('|').map(field => field.trim()));
 
-                // Vérification des informations
                 const userMatch = users.find(user => user[0] === userId && user[2] === password);
 
                 if (userMatch) {
-                    message.textContent = '>> ACCESS GRANTED. REDIRECTING...';
+                    message.textContent = 'ACCÈS AUTORISÉ. REDIRECTION...';
                     message.classList.add('success');
-                    // Stocke l'ID dans le localStorage pour la suite + redirection avec ?user=ID
                     localStorage.setItem('luckyjet_user', userId);
                     setTimeout(() => {
                         window.location.href = 'predictions.html?user=' + encodeURIComponent(userId);
                     }, 1200);
                 } else {
-                    message.textContent = '>> ACCESS DENIED: INVALID CREDENTIALS';
+                    message.textContent = 'IDENTIFIANT OU MOT DE PASSE INCORRECT.';
                     message.classList.add('error');
                 }
             } catch (error) {
-                message.textContent = '>> ERROR: UNABLE TO VERIFY CREDENTIALS';
+                message.textContent = 'ERREUR : IMPOSSIBLE DE VÉRIFIER.';
                 message.classList.add('error');
             }
         }
